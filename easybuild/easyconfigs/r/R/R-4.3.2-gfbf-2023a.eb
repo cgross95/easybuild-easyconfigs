@@ -9,7 +9,13 @@ toolchain = {'name': 'gfbf', 'version': '2023a'}
 
 source_urls = ['https://cloud.r-project.org/src/base/R-%(version_major)s']
 sources = [SOURCE_TAR_GZ]
-checksums = ['b3f5760ac2eee8026a3f0eefcb25b47723d978038eee8e844762094c860c452a']
+patches = [
+    'R-4.3.2-gfbf-2023a-no_vignettes.patch',
+]
+checksums = [
+    {'R-4.3.2.tar.gz': 'b3f5760ac2eee8026a3f0eefcb25b47723d978038eee8e844762094c860c452a'},
+    {'R-4.3.2-gfbf-2023a-no_vignettes.patch': '5a558f42075b6befb5aeeb8d1213057d84698993a89eb1119be0498dbe85117c'},
+]
 
 builddependencies = [
     ('pkgconf', '1.9.5'),
@@ -65,9 +71,6 @@ exts_default_options = {
 # !! order of packages is important !!
 # packages updated on 5th November 2023
 exts_list = [
-    # include packages that are part of the base installation of R,
-    # both to make sure they are available (via sanity check),
-    # and to be able to pass the check for required dependencies when installing extensions in parallel
     'base',
     'compiler',
     'datasets',
