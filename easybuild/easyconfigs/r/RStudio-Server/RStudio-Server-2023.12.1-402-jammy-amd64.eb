@@ -1,0 +1,37 @@
+easyblock = 'Binary'
+
+name = 'RStudio-Server'
+version = "2023.12.1-402"
+versionsuffix = '-jammy-amd64'
+
+homepage = 'https://www.rstudio.com/'
+description = """This is the RStudio Server version.
+RStudio is a set of integrated tools designed to help you be more productive with R.
+
+The server can be started with:
+  rserver --server-daemonize=0 --www-port 8787 --rsession-which-r=$(which R)
+"""
+
+toolchain = SYSTEM
+
+source_urls = ['https://download2.rstudio.org/server/jammy/amd64']
+sources = ['rstudio-server-%(version)s-amd64.deb']
+checksums = ['2ceeebe5d1d77068b36e85f7cf366cd1409f7642a80261b6bbeb3da945ef0888']
+
+# both rpm2cio (provided by rpm package) and cpio commands are required for installing
+osdependencies = ['dpkg']
+
+install_cmd = "dpkg -x rstudio-server*.deb %(installdir)s && mv %(installdir)s/usr/lib/rstudio-server/* %(installdir)s && rm -r %(installdir)s/usr"
+
+sanity_check_paths = {
+    'files': ['bin/rstudio-server'],
+    'dirs': ['db', 'R', 'resources'],
+}
+
+sanity_check_commands = [
+    # make sure all required libraries are found
+    "ldd %(installdir)s/bin/rserver",
+    "rstudio-server version",
+]
+
+moduleclass = 'cae'
