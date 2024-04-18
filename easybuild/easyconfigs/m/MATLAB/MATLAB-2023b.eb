@@ -9,7 +9,8 @@ description = """MATLAB is a high-level language and interactive environment
 toolchain = SYSTEM
 
 sources = ['R%s_Linux.iso' % (version)]
-checksums = ['f1cc4ae1a2e42a1d22745884aa80bf0d5d8676939ad21741ccff15fade06a881']
+checksums = ['2c35296d77f680146d88aa47ad4126241e321b406aef4cf1fc7a7d1dcb9c8ceb']
+
 download_instructions = 'Download %s from mathworks.com' % sources[0]
 
 java_options = '-Xmx2048m'
