@@ -1,0 +1,46 @@
+# A. Domingo (Vrije Universiteit Brussel)
+# J. Sassmannshausen (Imperial College London/UK)
+
+easyblock = 'CMakeNinja'
+
+name = 'Simple-DFTD3'
+version = '0.7.0'
+
+homepage = 'https://dftd3.readthedocs.io'
+description = """Reimplementation of the D3 dispersion correction. The s-dftd3 project aims to
+provide a user-friendly and uniform interface to the D3 dispersion model and
+for the calculation of DFT-D3 dispersion corrections."""
+
+toolchain = {'name': 'foss', 'version': '2023a'}
+toolchainopts = {'usempi': False, 'openmp': True, 'pic': True}
+
+source_urls = [GITHUB_LOWER_SOURCE]
+sources = ['v%(version)s.tar.gz']
+checksums = ['19400a176eb4dcee7b89181a5a5f0033fe6b05c52821e54896a98448761d003a']
+
+builddependencies = [
+    ('CMake', '3.26.3'),
+    ('Ninja', '1.11.1'),
+]
+dependencies = [
+    ('mctc-lib', '0.3.1'),
+    ('mstore', '0.2.0'),
+    ('TOML-Fortran', '0.3.1'),
+]
+
+configopts = "-DWITH_BLAS=1 -DWITH_OpenMP=1"
+
+github_account = 'dftd3'
+runtest = ''
+# run suite of tests with ctest
+test_cmd = 'ctest'
+build_shared_libs = True
+
+sanity_check_paths = {
+    'files': ['bin/s-%(github_account)s', 'lib/libs-%(github_account)s.so', 'include/%(github_account)s.h', 'include/s-%(github_account)s.h'],
+    'dirs': ['include/s-%(github_account)s', 'lib/cmake', 'lib/pkgconfig'],
+}
+
+sanity_check_commands = ['s-%(github_account)s --help']
+
+moduleclass = 'chem'
