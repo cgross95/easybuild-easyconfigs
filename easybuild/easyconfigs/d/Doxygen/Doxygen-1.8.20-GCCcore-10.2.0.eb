@@ -23,7 +23,10 @@ builddependencies = [
     ('flex', '2.6.4'),
     ('pkg-config', '0.29.2'),
 ]
-dependencies = [('libiconv', '1.16')]
+dependencies = [
+    ('libiconv', '1.16'),
+    ('Python', '3.8.6'),
+]
 
 configopts = "-DICONV_DIR=$EBROOTLIBICONV -DICONV_IN_GLIBC=OFF"
 
