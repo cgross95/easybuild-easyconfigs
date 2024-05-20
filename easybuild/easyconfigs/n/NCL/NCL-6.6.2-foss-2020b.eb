@@ -54,4 +54,7 @@ dependencies = [
     ('libjpeg-turbo', '2.0.5'),
 ]
 
+# Super hacky substitution to fix Makefile being generate with 1 instead of x86_64 in installpath
+preinstallopts="sed -i 's/\/1\//\/x86_64\//g' Makefile && "
+
 moduleclass = 'data'
