@@ -20,8 +20,8 @@ toolchain = {'name': 'GCC', 'version': '12.3.0'}
 source_urls = ['http://research-pub.gene.com/gmap/src/']
 sources = [SOURCELOWER_TAR_GZ]
 patches = [
-    '%(name)s-%(version)s_cleanup-headers.patch',
-    '%(name)s-%(version)s_fix-typecast.patch',
+    '%(name)s-2023-02-17_cleanup-headers.patch',
+    '%(name)s-2023-02-17_fix-typecast.patch',
 ]
 checksums = []
 # with these deps you can use standard compressed files
