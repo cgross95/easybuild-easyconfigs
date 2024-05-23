@@ -1,0 +1,11 @@
+diff -ruN exabayes-1.5/src/comm/LocalComm.hpp exabayes-1.5.new/src/comm/LocalComm.hpp
+--- exabayes-1.5/src/comm/LocalComm.hpp	2024-05-23 14:47:47.745072601 -0400
++++ exabayes-1.5.new/src/comm/LocalComm.hpp	2024-05-23 14:48:46.538000698 -0400
+@@ -5,6 +5,7 @@
+ #include "threadDefs.hpp"
+ #include <iostream>
+ #include <numeric>
++#include <functional>
+ 
+ #include "MessageQueue.hpp"
+ #include "MessageQueueSingle.hpp"
