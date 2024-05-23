@@ -1,0 +1,45 @@
+# #
+# This is a contribution from DeepThought HPC Service, Flinders University, Adelaide, Australia
+# Homepage: 	https://staff.flinders.edu.au/research/deep-thought
+#
+# Authors::	Robert Qiao <rob.qiao@flinders.edu.au>
+# License::	GPLv3.0
+#
+# Notes::
+# #
+
+name = 'Mothur'
+version = '1.48.0'
+versionsuffix = '-Python-%(pyver)s'
+
+homepage = 'https://www.mothur.org/'
+description = """Mothur is a single piece of open-source, expandable software
+ to fill the bioinformatics needs of the microbial ecology community."""
+
+toolchain = {'name': 'foss', 'version': '2023a'}
+toolchainopts = {'usempi': True, 'cstd': 'c++11'}
+
+source_urls = ['https://github.com/%(namelower)s/%(namelower)s/archive/']
+sources = ['v%(version)s.tar.gz']
+patches = [
+    '%(name)s-%(version)s-fix_byte_redefinition.patch',
+    '%(name)s-%(version)s-fix_makefile.patch',
+]
+checksums = [
+    {'v1.48.0.tar.gz': '9494406abd8d14b821782ab9db811f045ded9424f28f01234ee6764d4e78941d'},
+    {'Mothur-1.48.0-fix_byte_redefinition.patch': 'fa5488da8c52725647c52a751798b825f9063a4229b41641bd9d798452794193'},
+    {'Mothur-1.48.0-fix_makefile.patch': 'd3408941db95f084cb5b94965f4aaba6bc865b346be029a933ee6bf08ab5c797'},
+]
+
+dependencies = [
+    ('Python', '3.11.3'),
+    ('Boost.Python', '1.79.0'),
+    ('GSL', '2.7'),
+    ('HDF5', '1.14.0'),
+    ('libreadline', '8.2'),
+    ('ncurses', '6.4'),
+    ('zlib', '1.2.13'),
+]
+
+
+moduleclass = 'bio'

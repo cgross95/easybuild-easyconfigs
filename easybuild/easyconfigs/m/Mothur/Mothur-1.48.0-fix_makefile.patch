@@ -1,0 +1,30 @@
+# See https://github.com/mothur/mothur/issues/843#issuecomment-1746864732
+$ diff -Nub B/mothur-1.48.0/Makefile A/mothur-1.48.0/Makefile
+--- B/mothur-1.48.0/Makefile	2022-05-18 17:27:36.000000000 +0100
++++ A/mothur-1.48.0/Makefile	2023-10-04 14:06:26.005250446 +0100
+@@ -105,10 +105,17 @@
+ #
+ #
+ 	VPATH=source/calculators:source/chimera:source/classifier:source/clearcut:source/commands:source/communitytype:source/datastructures:source/engines:source/metastats:source/read:source/svm:source/
++    source := source
+     skipUchime := source/uchime_src/
++    skipTestMothur := source/TestMothur/
++    skipSeqnoise := seqnoise.cpp
+     subdirs :=  $(sort $(dir $(filter-out  $(skipUchime), $(wildcard source/*/))))
++    subdirs :=  $(filter-out  $(skipTestMothur), $(subdirs))
+     subDirIncludes = $(patsubst %, -I %, $(subdirs))
++    subDirIncludes += $(patsubst %, -I %, $(source))
+     subDirLinking =  $(patsubst %, -L%, $(subdirs))
++    subDirLinking +=  $(patsubst %, -L%, $(source))
++    subdirs :=  $(dir source) $(sort $(dir $(filter-out  $(skipUchime), $(wildcard source/*/))))
+     CXXFLAGS += -I. $(subDirIncludes)
+     LDFLAGS += $(subDirLinking)
+ 
+@@ -118,6 +125,8 @@
+ #
+     OBJECTS=$(patsubst %.cpp,%.o,$(wildcard $(addsuffix *.cpp,$(subdirs))))
+     OBJECTS+=$(patsubst %.c,%.o,$(wildcard $(addsuffix *.c,$(subdirs))))
++    OBJECTS+=$(patsubst %.cpp,%.o,$(filter-out $(skipSeqnoise), $(wildcard source/*.cpp)))
++    OBJECTS+=$(patsubst %.cpp,%.o,$(filter-out $(skipSeqnoise), $(wildcard source/*.c)))
+     OBJECTS+=$(patsubst %.cpp,%.o,$(wildcard *.cpp))
+     OBJECTS+=$(patsubst %.c,%.o,$(wildcard *.c))
