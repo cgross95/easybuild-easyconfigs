@@ -1,0 +1,57 @@
+easyblock = 'CMakeMake'
+
+name = 'MariaDB'
+version = '10.11.8'
+
+homepage = 'https://mariadb.org/'
+description = """MariaDB is an enhanced, drop-in replacement for MySQL.
+Included engines: myISAM, Aria, InnoDB, RocksDB, TokuDB, OQGraph, Mroonga."""
+
+toolchain = {'name': 'GCC', 'version': '12.3.0'}
+
+source_urls = [
+    'https://archive.%(namelower)s.org/%(namelower)s-%(version)s/source/',
+    'http://ftp.hosteurope.de/mirror/archive.%(namelower)s.org/%(namelower)s-%(version)s/source',
+]
+sources = [SOURCELOWER_TAR_GZ]
+patches = ['%(name)s-10.1.13-link-rt-for-jemalloc.patch']
+
+builddependencies = [
+    ('CMake', '3.26.3'),
+    ('libaio', '0.3.113'),
+]
+dependencies = [
+    ('ncurses', '6.4'),
+    ('zlib', '1.2.13'),
+    ('LZO', '2.10'),  # optional
+    ('lz4', '1.9.4'),  # optional
+    ('XZ', '5.4.2'),
+    ('jemalloc', '5.3.0'),  # optional
+    ('snappy', '1.1.10'),
+    ('libxml2', '2.11.4'),
+    ('Boost', '1.82.0'),
+    ('Judy', '1.0.5'),  # needed by OQGraph
+    ('PCRE2', '10.42'),
+    ('OpenSSL', '1.1', '', SYSTEM),  # runtime dep for mysql and PCRE2 for mysqltest
+]
+
+configopts = "-DCMAKE_SHARED_LINKER_FLAGS='-fuse-ld=bfd' -DMYSQL_MAINTAINER_MODE=OFF -DWITH_PCRE=auto -DWITH_ZLIB=system -DWITH_EMBEDDED_SERVER=ON -DWITH_SAFEMALLOC=OFF "  # Linking fails with default gold linker
+
+
+sanity_check_paths = {
+    'files': ['bin/mysql', 'bin/mysqld_safe', 'lib/libmysqlclient.so', 'lib/libmysqld.so', 'lib/plugin/ha_connect.so', 'lib/plugin/ha_rocksdb.so', 'lib/plugin/ha_oqgraph.so', 'scripts/mysql_install_db'],
+    'dirs': ['include', 'share'],
+}
+
+sanity_check_commands = [
+    "mysql --help",
+    "mysqltest --help",
+]
+
+modextrapaths = {'PATH': 'scripts'}
+
+# Ensure that jemalloc does not use transparent hugepages.
+# Database workloads with THP can cause memory bloat, potentially hiting OOM errors.
+modextravars = {'MALLOC_CONF': 'thp:never'}
+
+moduleclass = 'data'
