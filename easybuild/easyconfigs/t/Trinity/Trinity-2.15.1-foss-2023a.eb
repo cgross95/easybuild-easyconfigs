@@ -33,10 +33,10 @@ builddependencies = [
 # for reference, list of dependencies in the container image used upstream:
 # https://github.com/trinityrnaseq/trinityrnaseq/blob/master/Docker/Dockerfile
 dependencies = [
-    ('Java', '17', '', SYSTEM),
+    ('Java', '11', '', SYSTEM),
     ('ant', '1.10.12', '-Java-%(javaver)s', SYSTEM),
-    ('picard', '3.0.0', '-Java-%(javaver)s', SYSTEM),
-    ('GATK', '4.5.0.0', '-Java-%(javaver)s'),
+    ('picard', '2.25.1', '-Java-%(javaver)s', SYSTEM),
+    ('GATK', '4.3.0.0', '-Java-%(javaver)s'),
     ('Perl', '5.36.1'),
     ('Python', '3.11.3'),
     ('SciPy-bundle', '2023.07'),
