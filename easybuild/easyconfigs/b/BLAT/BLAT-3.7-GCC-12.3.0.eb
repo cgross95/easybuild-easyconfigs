@@ -20,7 +20,10 @@ toolchainopts = {'pic': True}
 
 source_urls = ['https://genome-test.gi.ucsc.edu/~kent/src/']
 sources = ['%(namelower)sSrc37.zip']
-patches = ['%(name)s-%(version)s_mend-tests.patch']
+patches = [
+    '%(name)s-%(version)s_mend-tests.patch',
+    '%(name)s-%(version)s-use_module_ssl.patch',
+]
 checksums = [
     {'blatSrc37.zip': '88ee2b272d42ab77687c61d200b11f1d58443951069feb7e10226a2509f84cf2'},
     {'%(name)s-3.7_mend-tests.patch': '1f42c7fadf7676a5cc3a2016f70089c3541aa1d53816cf86072682c44cf311a6'},
