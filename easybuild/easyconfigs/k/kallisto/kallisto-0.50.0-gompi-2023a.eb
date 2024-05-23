@@ -14,7 +14,7 @@ toolchainopts = {'pic': True, 'usempi': True}
 
 source_urls = [GITHUB_SOURCE]
 sources = ['v%(version)s.tar.gz']
-patches = ['%(name)s-%(version)s_use-external-htslib.patch']
+patches = ['%(name)s-0.48.0_use-external-htslib.patch']
 checksums = []
 builddependencies = [
     ('Autotools', '20220317'),
