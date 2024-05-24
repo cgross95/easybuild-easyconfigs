@@ -28,8 +28,8 @@ source_urls = ['https://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/%(version)
 sources = ['ncbi-blast-%(version)s+-src.tar.gz']
 patches = [('https://www.repeatmasker.org/%(namelower)s/isb-%(version)s+-%(namelower)s.patch.gz', 2)]
 checksums = [
-    {'ncbi-blast-%(version)s+-src.tar.gz': '89553714d133daf28c477f83d333794b3c62e4148408c072a1b4620e5ec4feb2'},
-    {'isb-%(version)s+-%(namelower)s.patch.gz': '06595546318577b450e4a82c641017b2818b1741446e7ac675d82aef3d8f7f3d'},
+    {'ncbi-blast-2.14.1+-src.tar.gz': '712c2dbdf0fb13cc1c2d4f4ef5dd1ce4b06c3b57e96dfea8f23e6e99f5b1650e'},
+    {'isb-2.14.1+-rmblast.patch.gz': '9c8091eb2aec97ac83287859d2bfec83cb08c082d5a121cbefe3cc626f933763'},
 ]
 
 dependencies = [
