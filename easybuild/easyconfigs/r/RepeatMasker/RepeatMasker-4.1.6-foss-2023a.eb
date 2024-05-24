@@ -1,0 +1,42 @@
+easyblock = 'Tarball'
+
+name = 'RepeatMasker'
+version = '4.1.6'
+
+homepage = 'https://www.repeatmasker.org/'
+description = """RepeatMasker is a program that screens DNA sequences for interspersed repeats
+ and low complexity DNA sequences."""
+
+toolchain = {'name': 'foss', 'version': '2023a'}
+
+source_urls = ['https://www.%(namelower)s.org/%(name)s']
+sources = [SOURCE_TAR_GZ]
+checksums = ['d7af5f49b7ecc5fb90e66956c85877220ec461f6e4d54e06a5996bb2fd6b63fa']
+
+dependencies = [
+    ('Python', '3.11.3'),
+    ('Perl', '5.36.1'),
+    ('TRF', '4.09.1'),
+    ('h5py', '3.9.0'),
+    ('HMMER', '3.4'),
+    ('RMBlast', '2.14.1'),
+]
+
+fix_perl_shebang_for = ['%(name)s']
+postinstallcmds = [
+    'cd %(installdir)s &&./configure -perlbin "$EBROOTPERL/bin/perl" -trf_prgm "$EBROOTTRF/bin/trf" -hmmer_dir "$EBROOTHMMER/bin" -rmblast_dir "$EBROOTRMBLAST/bin" -default_search_engine rmblast',
+]
+
+sanity_check_paths = {
+    'files': ['%(name)s', 'RepeatMaskerConfig.pm'],
+    'dirs': ['Libraries', 'util'],
+}
+
+sanity_check_commands = ['%(name)s -help']
+
+modextrapaths = {
+    'PATH': '',
+    'PERL5LIB': '',
+}
+
+moduleclass = 'bio'
