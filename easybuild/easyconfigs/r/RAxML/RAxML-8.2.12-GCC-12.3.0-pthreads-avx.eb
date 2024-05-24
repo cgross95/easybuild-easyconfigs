@@ -1,0 +1,36 @@
+easyblock = 'MakeCp'
+
+name = 'RAxML'
+version = '8.2.12'
+versionsuffix = '-pthreads-avx'
+
+homepage = 'https://github.com/stamatak/standard-RAxML'
+description = "RAxML search algorithm for maximum likelihood based inference of phylogenetic trees."
+
+toolchain = {'name': 'GCC', 'version': '12.3.0'}
+
+source_urls = ['https://github.com/stamatak/standard-%(name)s/archive/']
+sources = ['v%(version)s.zip']
+checksums = ['abe6978c6027e897ebed67066836e4eadd57ecd0d042045634424dd001e86105']
+
+buildopts = '-f Makefile.AVX.PTHREADS.gcc CC="$CC"'
+
+postinstallcmds = ['cd %(installdir)s/bin && ln -s raxmlHPC-PTHREADS-AVX raxmlHPC']
+files_to_copy = [
+    (['raxmlHPC-PTHREADS-AVX'], 'bin'),
+    'usefulScripts',
+    'README',
+    'manual',
+]
+
+sanity_check_paths = {
+    'files': ['bin/raxmlHPC'],
+    'dirs': [],
+}
+
+sanity_check_commands = [
+    "raxmlHPC -h",
+    "raxmlHPC -v",
+]
+
+moduleclass = 'bio'
