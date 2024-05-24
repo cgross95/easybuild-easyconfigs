@@ -11,7 +11,7 @@ toolchain = {'name': 'foss', 'version': '2023a'}
 
 source_urls = ['https://www.%(namelower)s.org/%(name)s']
 sources = [SOURCE_TAR_GZ]
-checksums = ['d7af5f49b7ecc5fb90e66956c85877220ec461f6e4d54e06a5996bb2fd6b63fa']
+checksums = ['85c8bf61dd8411d140674cfa74e7642b41878fd63a7a779845e35162828f0d74']
 
 dependencies = [
     ('Python', '3.11.3'),
