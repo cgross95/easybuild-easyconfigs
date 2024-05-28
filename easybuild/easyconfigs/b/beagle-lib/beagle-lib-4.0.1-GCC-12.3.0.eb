@@ -1,0 +1,31 @@
+easyblock = 'CMakeMake'
+
+name = 'beagle-lib'
+version = '4.0.1'
+
+homepage = 'https://github.com/beagle-dev/beagle-lib'
+description = """beagle-lib is a high-performance library that can perform the core calculations at the heart of most
+ Bayesian and Maximum Likelihood phylogenetics packages."""
+
+toolchain = {'name': 'GCC', 'version': '12.3.0'}
+
+source_urls = [GITHUB_SOURCE]
+sources = ['v%(version)s.tar.gz']
+
+builddependencies = [
+    ('CMake', '3.26.3'),
+    ('pkgconf', '1.9.5'),
+]
+dependencies = [
+    ('Java', '21.0.2', '', SYSTEM),
+    ('pocl', '4.0'),
+]
+
+github_account = 'beagle-dev'
+
+sanity_check_paths = {
+    'files': ['include/libhmsbeagle-1/libhmsbeagle/beagle.h', 'include/libhmsbeagle-1/libhmsbeagle/platform.h', 'lib/libhmsbeagle-cpu.so', 'lib/libhmsbeagle-cpu-sse.so', 'lib/libhmsbeagle-jni.so', 'lib/libhmsbeagle.so'],
+    'dirs': [],
+}
+
+moduleclass = 'numlib'
