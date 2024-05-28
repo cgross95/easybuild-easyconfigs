@@ -15,7 +15,7 @@ toolchain = {'name': 'foss', 'version': '2023a'}
 
 source_urls = [GITHUB_SOURCE]
 sources = ['v%(version)s.tar.gz']
-checksums = ['e2d94f6179c33990a77fa9fdcefb842c8481b4c30833c9c12cbbe54cb3fdda73']
+checksums = ['c5723c69c8897e717f03a7a0690a8f9b4a6c56991d947eddb224066ddf2d1448']
 
 dependencies = [
     ('Perl', '5.36.1'),
