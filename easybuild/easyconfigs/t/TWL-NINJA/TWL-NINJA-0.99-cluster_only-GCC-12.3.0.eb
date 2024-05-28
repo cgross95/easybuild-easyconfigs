@@ -17,7 +17,6 @@ checksums = ['02efaa6a93ac859168dac9ad41567af64aba957caa130b6d2da73fa413fed0bd']
 
 buildopts = 'CXX="$CXX" CXXFLAGS="$CXXFLAGS"'
 
-start_dir = 'NINJA'
 files_to_copy = [
     (['NINJA/Ninja'], 'bin'),
     'NINJA/README',
