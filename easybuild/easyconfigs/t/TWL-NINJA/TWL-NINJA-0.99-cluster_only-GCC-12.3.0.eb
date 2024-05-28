@@ -16,6 +16,7 @@ sources = ['%(version)s.tar.gz']
 checksums = ['02efaa6a93ac859168dac9ad41567af64aba957caa130b6d2da73fa413fed0bd']
 
 buildopts = 'CXX="$CXX" CXXFLAGS="$CXXFLAGS"'
+build_cmd_targets = "build"
 
 files_to_copy = [
     (['NINJA/Ninja'], 'bin'),
