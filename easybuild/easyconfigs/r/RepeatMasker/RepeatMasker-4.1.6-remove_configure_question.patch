@@ -1,0 +1,33 @@
+diff -ruN 4.1.6-foss-2023a/configure 4.1.6-foss-2023a.new/configure
+--- 4.1.6-foss-2023a/configure	2023-12-05 12:02:36.000000000 -0500
++++ 4.1.6-foss-2023a.new/configure	2024-05-28 13:15:40.295026381 -0400
+@@ -358,29 +358,7 @@
+   if ( $gzip ) {
+     die "The FamDB database in $LIBDIR/famdb appears be compressed (gzipd).  Please uncompress the FamDB partitions and rerun configure.\n\n";
+   }
+-  do { 
+-    print "   *** No libraries present ***\n\n";
+-    print "Choose:\n";
+-    print "   1. Download minimal Dfam df_version (partition 0) using wget or curl\n";
+-    print "      (please see https://dfam.org/releases/current/families/FamDB/README.txt for full list of Dfam partitions.)\n";
+-    print "   2. Exit and download libraries manually (Dfam $df_version or newer).\n";
+-    print "\n\nEnter Selection: ";
+-    $answer = <STDIN>;
+-    $answer =~ s/[\n\r]+//g;
+-  } while ( $answer ne "1" && $answer ne "2" );
+ 
+-  if ( $answer eq "2" ) {
+-    print "\n\nPlease download a copy of the Dfam database ( famdb HDF5 format )\n" . 
+-        "from: https://www.dfam.org/releases/Dfam_$df_version/families/FamDB\n\n" .
+-        "Minimally you may download just the root partition (file ending\n" .
+-        "with \"*.0.h5\"), uncompress it ( gunzip ), store in the\n" .
+-        "$LIBDIR/famdb folder,\n" .
+-        "and rerun the configure program. See\n" . 
+-        "  https://www.dfam.org/releases/Dfam_$df_version/families/FamDB/README\n" .
+-        "for more details on the taxanomic coverage of each partition.\n\n\n";
+-    exit(0);
+-  }
+-  system( "clear" );
+   my $hasWget = `sh -c 'command -v wget'`;
+   $hasWget =~ s/[\n\r]+//g;
+   my $hasCurl = `sh -c 'command -v curl'`;

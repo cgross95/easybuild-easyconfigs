@@ -11,7 +11,12 @@ toolchain = {'name': 'foss', 'version': '2023a'}
 
 source_urls = ['https://www.%(namelower)s.org/%(name)s']
 sources = [SOURCE_TAR_GZ]
-checksums = ['85c8bf61dd8411d140674cfa74e7642b41878fd63a7a779845e35162828f0d74']
+patches = ['RepeatMasker-4.1.6-remove_configure_question.patch']
+checksums = [
+    {'RepeatMasker-4.1.6.tar.gz': '85c8bf61dd8411d140674cfa74e7642b41878fd63a7a779845e35162828f0d74'},
+    {'RepeatMasker-4.1.6-remove_configure_question.patch':
+     '851c17fc39d9aca9de3c53fc5f49bd15d5ea6b368121029a981a55d906ac16e0'},
+]
 
 dependencies = [
     ('Python', '3.11.3'),
