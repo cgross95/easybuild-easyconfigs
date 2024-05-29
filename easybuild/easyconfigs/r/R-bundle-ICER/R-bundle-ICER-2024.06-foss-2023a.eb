@@ -63,6 +63,7 @@ else:
 exts_list = [
     ('rjags', '4-15'),
     ('Rmpi', '0.7-2'),
+    ('Seurat', '5.1.0'),
 ]
 
 modextrapaths = {'R_LIBS_SITE': ''}
