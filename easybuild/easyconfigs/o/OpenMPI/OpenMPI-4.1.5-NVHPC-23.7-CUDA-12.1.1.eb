@@ -39,7 +39,7 @@ dependencies = [
     ('libevent', '2.1.12'),
     ('UCX', '1.14.1'),
     ('UCX-CUDA', '1.14.1', '-CUDA-%(cudaver)s'),
-    ('libfabric', '1.18.0'),
+    # ('libfabric', '1.18.0'),
     ('PMIx', '4.2.4'),
     ('UCC', '1.2.0'),
     ('UCC-CUDA', '1.2.0', '-CUDA-%(cudaver)s'),
