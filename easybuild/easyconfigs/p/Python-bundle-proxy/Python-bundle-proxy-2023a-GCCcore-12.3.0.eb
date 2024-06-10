@@ -1,0 +1,56 @@
+easyblock = 'PythonBundle'
+
+name = 'Python-bundle-proxy'
+version = '2023a'
+
+homepage = 'https://python.org/'
+description = "Bundle of Python packages for OnDemand proxy"
+
+toolchain = {'name': 'GCCcore', 'version': '12.3.0'}
+toolchainopts = {'pic': True}
+
+builddependencies = [
+    ('binutils', '2.40'),
+    ('UnZip', '6.0'),
+    ('pkgconf', '1.9.5'),
+    ('hatchling', '1.18.0'),
+]
+
+dependencies = [
+    ('Python', '3.11.3'),
+    ('Python-bundle-PyPI', '2023.06'),
+    ('virtualenv', '20.23.1'),
+]
+
+exts_default_options = {
+    'download_dep_fail': True,
+    'sanity_pip_check': True,
+    'use_pip': True,
+}
+
+# package versions updated 2024-06-10
+exts_list = [
+    ('versioneer', '0.29', {
+        'checksums': ['5ab283b9857211d61b53318b7c792cf68e798e765ee17c27ade9f6c924235731'],
+    }),
+    ('constantly', '23.10.4', {
+        'checksums': ['aa92b70a33e2ac0bb33cd745eb61776594dc48764b06c35e0efd050b7f1c7cbd'],
+    }),
+    ('hyperlink', '21.0.0', {
+        'checksums': ['427af957daa58bc909471c6c40f74c5450fa123dd093fc53efd2e91d2705a56b'],
+    }),
+    ('incremental', '22.10.0', {
+        'checksums': ['912feeb5e0f7e0188e6f42241d2f450002e11bbc0937c65865045854c24c0bd0'],
+    }),
+    ('zope.interface', '6.4.post2', {
+        'checksums': ['1c207e6f6dfd5749a26f5a5fd966602d6b824ec00d2df84a7e9a924e8933654e'],
+    }),
+    ('Automat', '0.8.0', {
+        'checksums': ['269a09dfb063a3b078983f4976d83f0a0d3e6e7aaf8e27d8df1095e09dc4a484'],
+    }),
+    ('twisted', '24.3.0', {
+        'checksums': ['6b38b6ece7296b5e122c9eb17da2eeab3d98a198f50ca9efd00fb03e5b4fd4ae'],
+    }),
+]
+
+moduleclass = 'lang'
