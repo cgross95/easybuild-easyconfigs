@@ -1,0 +1,37 @@
+# Contribution from the Crick HPC team
+# uploaded by J. Sassmannshausen
+
+easyblock = 'ConfigureMake'
+
+name = 'glew'
+version = '2.1.0'
+
+homepage = 'http://glew.sourceforge.net/'
+description = """The OpenGL Extension Wrangler Library (GLEW) is a cross-platform open-source
+C/C++ extension loading library. GLEW provides efficient run-time mechanisms
+for determining which OpenGL extensions are supported on the target platform."""
+
+toolchain = {'name': 'GCCcore', 'version': '12.3.0'}
+
+source_urls = [SOURCEFORGE_SOURCE]
+sources = [SOURCE_TGZ]
+checksums = ['04de91e7e6763039bc11940095cd9c7f880baba82196a7765f727ac05a993c95']
+
+builddependencies = [
+    ('binutils', '2.40'),
+]
+dependencies = [
+    ('Mesa', '23.1.4'),
+]
+
+preinstallopts = "GLEW_PREFIX=%(installdir)s GLEW_DEST=%(installdir)s "
+
+skipsteps = ['configure']
+install_cmd = "make install.all"
+
+sanity_check_paths = {
+    'files': ['lib/libGLEW.a', 'lib/libGLEW.so', 'bin/glewinfo', 'bin/visualinfo', 'include/GL/%(name)s.h', 'include/GL/glxew.h', 'include/GL/wglew.h'],
+    'dirs': [''],
+}
+
+moduleclass = 'devel'
