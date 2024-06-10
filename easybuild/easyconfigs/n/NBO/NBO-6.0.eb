@@ -1,0 +1,42 @@
+# this recipe is configured for use with Gaussian G16, revision A03 or later
+
+easyblock = 'Tarball'
+
+name = 'NBO'
+version = '6.0'
+
+toolchain = SYSTEM
+
+homepage = 'http://nbo.chem.wisc.edu/'
+description = """ The Natural Bond Orbital (NBO) program is a discovery tool
+for chemical insights from complex wavefunctions. """
+
+download_instructions = """
+NBO6 is proprietary software, order here: https://charge.wisc.edu/chemistry/order_nbo7.aspx
+"""
+sources = ['nbo%(version)s-bin-linux-x86_64.tar.gz']
+checksums = [
+]
+
+local_intlength = 'i8'  # change to i4 if Gaussian was compiled with 32-bit integers
+
+postinstallcmds = [
+    'sed -i -e "s|setenv GAUNBO.*|setenv GAUNBO g16nbo|" %(installdir)s/bin/gaunbo6',
+    'sed -i -e "s|setenv BINDIR.*|setenv BINDIR %(installdir)s/bin|" %(installdir)s/bin/gaunbo6',
+    'sed -i -e "s|setenv INT.*|setenv INT %s|" %%(installdir)s/bin/gaunbo6' % local_intlength,
+    'cp %(builddir)s/nbo6/gennbo %(builddir)s/nbo6/gennbo.sh %(installdir)s/bin',
+    'sed -i -e "s|setenv NBOBIN ./bin|setenv NBOBIN %(installdir)s/bin|" %(installdir)s/bin/gennbo',
+    'sed -i "s|setenv NBOBIN ./bin|setenv NBOBIN %(installdir)s/bin|" %(installdir)s/bin/gennbo.sh',
+]
+
+sanity_check_paths = {
+    'files': ['bin/%s.%s.exe' % (x, local_intlength) for x in ('gennbo', 'g09nbo', 'g16nbo', 'nbo6')],
+    'dirs': [],
+}
+
+modextravars = {
+    'GENEXE': '%%(installdir)s/bin/gennbo.%s.exe' % local_intlength,
+    'NBOEXE': '%%(installdir)s/bin/nbo6.%s.exe' % local_intlength,
+}
+
+moduleclass = 'chem'
