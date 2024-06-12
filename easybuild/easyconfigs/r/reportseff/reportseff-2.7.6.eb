@@ -1,0 +1,31 @@
+easyblock = 'CmdCp'
+
+name = 'reportseff'
+version = '2.7.6'
+
+homepage = 'https://github.com/troycomi/reportseff'
+description = 'A python script for tabular display of slurm efficiency information'
+
+toolchain = SYSTEM
+
+github_account = 'troycomi'
+source_urls = [GITHUB_SOURCE]
+sources = ['v%(version)s.tar.gz']
+
+builddependencies = [
+    ('PyInstaller', '6.3.0', '', ('GCCcore', '12.3.0'))
+]
+
+cmds_map = [('.*', 'python -m pip install -t . . && PYTHONPATH=$PWD:$PYTHONPATH pyinstaller ./bin/reportseff')]
+
+
+files_to_copy = [
+    (['dist/reportseff/*'], 'bin')
+]
+
+sanity_check_paths = {
+    'files': ['bin/reportseff'],
+    'dirs': ['bin/_internal'],
+}
+
+moduleclass = 'tools'
