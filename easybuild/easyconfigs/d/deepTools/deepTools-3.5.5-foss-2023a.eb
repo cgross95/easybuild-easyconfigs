@@ -15,7 +15,7 @@ dependencies = [
     ('matplotlib', '3.7.2'),
     ('plotly.py', '5.16.0'),
     ('Pysam', '0.22.0'),
-    ('pyBigWig', '0.3.22'),
+    ('pyBigWig', '0.3.18'),
 ]
 
 sanity_pip_check = True

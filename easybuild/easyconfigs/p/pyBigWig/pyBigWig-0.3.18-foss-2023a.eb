@@ -1,0 +1,28 @@
+easyblock = 'PythonPackage'
+
+name = 'pyBigWig'
+version = "0.3.18"
+
+homepage = 'https://github.com/%(github_account)s/%(name)s'
+description = """A python extension, written in C, for quick access to bigBed
+ files and access to and creation of bigWig files."""
+
+toolchain = {'name': 'foss', 'version': '2023a'}
+
+source_urls = [GITHUB_SOURCE]
+sources = ['%(version)s.tar.gz']
+checksums = []
+dependencies = [
+    ('Python', '3.11.3'),
+    ('cURL', '8.0.1'),
+    ('NSS', '3.89.1'),
+    ('SciPy-bundle', '2023.07'),
+]
+
+github_account = 'deeptools'
+download_dep_fail = True
+sanity_pip_check = True
+use_pip = True
+options = {'modulename': '%(name)s'}
+
+moduleclass = 'bio'
