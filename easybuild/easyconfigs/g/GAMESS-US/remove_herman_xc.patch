@@ -1,0 +1,19 @@
+diff -ruN 20230930-R2-gompi-2023a/source/libxc.src 20230930-R2-gompi-2023a.new/source/libxc.src
+--- 20230930-R2-gompi-2023a/source/libxc.src	2023-07-01 02:04:29.000000000 -0400
++++ 20230930-R2-gompi-2023a.new/source/libxc.src	2024-06-14 11:40:16.703226707 -0400
+@@ -1708,7 +1708,6 @@
+     character(len= 3),  parameter   :: GGA_X_GAM_name                 = "GAM"                          !  32: Minnesota GAM exhange functional
+     character(len= 4),  parameter   :: GGA_X_GG99_name                = "GG99"                         ! 535: Gilbert and Gill 1999
+     character(len= 6),  parameter   :: GGA_X_HCTH_A_name              = "HCTH_A"                       !  34: HCTH-A
+-    character(len= 6),  parameter   :: GGA_X_HERMAN_name              = "HERMAN"                       ! 104: Herman Xalphabeta GGA
+     character(len= 7),  parameter   :: GGA_X_HJS_B88_name             = "HJS_B88"                      ! 527: HJS screened exchange B88 version
+     character(len=10),  parameter   :: GGA_X_HJS_B88_V2_name          = "HJS_B88_V2"                   !  46: HJS screened exchange B88 corrected version
+     character(len= 8),  parameter   :: GGA_X_HJS_B97X_name            = "HJS_B97X"                     ! 528: HJS screened exchange B97x version
+@@ -2161,7 +2160,6 @@
+     call add_free_functional(GGA_X_group,GGA_X_GAM_name,XC_GGA_X_GAM)
+     call add_free_functional(GGA_X_group,GGA_X_GG99_name,XC_GGA_X_GG99)
+     call add_free_functional(GGA_X_group,GGA_X_HCTH_A_name,XC_GGA_X_HCTH_A)
+-    call add_free_functional(GGA_X_group,GGA_X_HERMAN_name,XC_GGA_X_HERMAN)
+     call add_free_functional(GGA_X_group,GGA_X_HJS_B88_name,XC_GGA_X_HJS_B88)
+     call add_free_functional(GGA_X_group,GGA_X_HJS_B88_V2_name,XC_GGA_X_HJS_B88_V2)
+     call add_free_functional(GGA_X_group,GGA_X_HJS_B97X_name,XC_GGA_X_HJS_B97X)
