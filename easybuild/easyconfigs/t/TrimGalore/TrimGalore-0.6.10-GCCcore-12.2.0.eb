@@ -1,0 +1,24 @@
+easyblock = 'BinariesTarball'
+
+name = 'TrimGalore'
+version = '0.6.10'
+
+homepage = 'https://github.com/FelixKrueger/TrimGalore'
+description = 'Trim Galore is a wrapper around Cutadapt and FastQC to consistently apply adapter and quality trimming to FastQ files, with extra functionality for RRBS data.'
+
+toolchain = {'name': 'GCCcore', 'version': '12.2.0'}
+
+github_account = 'FelixKrueger'
+source_urls = [ GITHUB_SOURCE ]
+sources = ['%(version)s.tar.gz']
+
+dependencies = [
+    ('Perl', '5.36.0'),
+    ('cutadapt', '4.4'),
+    ('FastQC', '0.12.1', '-Java-11', SYSTEM),
+]
+
+sanity_check_paths = {
+    'files': ['bin/trim_galore'],
+    'dirs': [],
+}
