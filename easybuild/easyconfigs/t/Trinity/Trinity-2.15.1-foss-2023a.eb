@@ -55,6 +55,7 @@ dependencies = [
     ('SAMtools', '1.18'),
     ('STAR', '2.7.11b'),
     ('zlib', '1.2.13'),
+    ('DB_File', '1.859'),
 ]
 
 withsampledata = True
