@@ -1,0 +1,51 @@
+easyblock = 'PackedBinary'
+
+name = 'powertools'
+version = '1.3.1'
+
+homepage = 'https://docs.icer.msu.edu'
+
+description = ' Helpful tools developed by ICER for using the HPCC.'
+
+toolchain = SYSTEM
+
+sources = [{
+    'filename': 'powertools-20240807.tar.gz',
+    'git_config': {
+        'url': 'git@gitlab.msu.edu:icer/user-environment',
+        'repo_name': 'powertools',
+        # 'commit': 'new_os',
+        'commit': '553c20b08cdb0b54f374a68d098bdca2bb154b74',
+        'recursive': True
+    },
+}]
+
+dependencies = [
+    ('reportseff', '2.7.6'),
+]
+
+modextravars = {'PTOOLSROOT': '%(installdir)s'}
+modaliases = {
+    'longjob': 'source %(installdir)s/doc/longjob',
+    'PrimaryGroup': 'source %(installdir)s/doc/PrimaryGroup',
+    'conda-init': 'source %(installdir)s/doc/Conda_Initiation',
+    'jobenvtool': 'source %(installdir)s/doc/jobenvtool',
+    'mll': 'source %(installdir)s/doc/mll',
+    'msp': 'module spider',
+    'msh': 'module show',
+    'checkjob': 'scontrol show job',
+    'checknode': 'scontrol show node',
+    'nodelist': 'sinfo -N -l | grep -v "*"',
+    'showstart': 'squeue --format="%.18i %.9P %.8j %.8u %.2t %.19S %.6D %20Y %R", --sort=S -u $USER',
+    'showconfig': 'scontrol show config',
+    'prs': 'buyin_status -u $USER',
+    'qlist': 'squeue -r -h -t PD -u $USER -o %i',
+    'holdall': 'for j in $(qlist); do scontrol hold $j; done;'
+}
+
+sanity_check_paths = {
+    'files': [],
+    'dirs': ['bin', 'share/hpc_examples/examples']
+}
+
+moduleclass = 'tools'
