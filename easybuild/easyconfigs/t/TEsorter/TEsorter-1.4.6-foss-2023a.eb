@@ -1,0 +1,41 @@
+easyblock = 'PythonBundle'
+
+name = 'TEsorter'
+version = '1.4.6'
+
+homepage = 'https://github.com/zhangrengang/TEsorter'
+description = """An accurate and fast method to classify LTR-retrotransposons in plant genomes."""
+
+toolchain = {'name': 'foss', 'version': '2023a'}
+
+dependencies = [
+    ('Python', '3.11.3'),
+    ('Python-bundle-PyPI', '2023.06'),
+    ('Biopython', '1.83'),
+    ('typing-extensions', '4.9.0'),
+    ('hatchling', '1.18.0'),
+    ('HMMER', '3.4'),
+    ('BLAST+', '2.14.1'),
+]
+
+use_pip = True
+sanity_pip_check = True
+
+exts_list = [
+    ('versioningit', '3.1.2', {
+    }),
+    ('zlib-ng', '0.5.0', {
+        'source_tmpl': 'zlib_ng-0.5.0.tar.gz',
+    }),
+    ('isal', '1.7.0', {
+    }),
+    ('xopen', '2.0.2', {
+    }),
+    (name, version, {
+        'source_tmpl': 'v%(version)s.tar.gz',
+        'source_urls': ['https://github.com/zhangrengang/TEsorter/archive/refs/tags'],
+        'modulename': 'TEsorter',
+    })
+]
+
+moduleclass = 'bio'

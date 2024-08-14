@@ -24,6 +24,7 @@ dependencies = [
     ('HMMER', '3.4'),
     ('CD-HIT', '4.8.1'),
     ('TRF', '4.09.1'),
+    ('TEsorter', '1.4.6'),
 ]
 
 github_account = 'oushujun'

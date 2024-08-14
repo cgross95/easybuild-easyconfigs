@@ -12,7 +12,7 @@ source_urls = ['https://www.repeatmasker.org/%(name)s']
 sources = [SOURCE_TAR_GZ]
 
 dependencies = [
-    ('Perl', '5.36.1'),
+    ('Perl-bundle-CPAN', '5.36.1'),
     ('TRF', '4.09.1'),
     ('RMBlast', '2.14.1'),
     ('RepeatMasker', '4.1.6'),
