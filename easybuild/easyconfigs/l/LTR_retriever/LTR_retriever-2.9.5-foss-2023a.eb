@@ -1,0 +1,41 @@
+# Author: Jasper Grimm (UoY)
+
+easyblock = 'Tarball'
+
+name = 'LTR_retriever'
+version = '2.9.5'
+
+homepage = 'https://github.com/oushujun/LTR_retriever'
+description = """LTR_retriever is a highly accurate and sensitive program for
+ identification of LTR retrotransposons; The LTR Assembly Index (LAI) is also
+ included in this package.
+"""
+
+toolchain = {'name': 'foss', 'version': '2023a'}
+
+source_urls = [GITHUB_SOURCE]
+sources = ['v%(version)s.tar.gz']
+checksums = ['f50812e6342a1d427a69e11e7ccbf21d7d72acf52c373fbd4ffdbe8a96dd62b7']
+
+dependencies = [
+    ('Perl', '5.36.1'),
+    ('BLAST+', '2.14.1'),
+    ('RepeatMasker', '4.1.6'),
+    ('HMMER', '3.4'),
+    ('CD-HIT', '4.8.1'),
+    ('TRF', '4.09.1'),
+    ('TEsorter', '1.4.6'),
+]
+
+github_account = 'oushujun'
+
+sanity_check_paths = {
+    'files': ['%(name)s'],
+    'dirs': ['bin', 'database'],
+}
+
+sanity_check_commands = [("%(name)s -h 2>&1 | grep 'Usage: %(name)s'", '')]
+
+modextrapaths = {'PATH': ''}
+
+moduleclass = 'bio'

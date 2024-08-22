@@ -22,7 +22,7 @@ dependencies = [
     ('CD-HIT', '4.8.1'),
     ('MAFFT', '7.520', '-with-extensions'),
     ('GenomeTools', '1.6.5'),  # for LTRHarvest
-    ('LTR_retriever', '2.9.8'),
+    ('LTR_retriever', '2.9.5'),
     ('TWL-NINJA', '0.99-cluster_only'),
 ]
 
