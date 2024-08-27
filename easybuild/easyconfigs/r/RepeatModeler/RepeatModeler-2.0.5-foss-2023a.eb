@@ -23,7 +23,7 @@ dependencies = [
     ('MAFFT', '7.520', '-with-extensions'),
     ('GenomeTools', '1.6.5'),  # for LTRHarvest
     ('LTR_retriever', '2.9.5'),
-    ('TWL-NINJA', '0.99-cluster_only'),
+    ('TWL-NINJA', '0.98-cluster_only'),
 ]
 
 fix_perl_shebang_for = [
