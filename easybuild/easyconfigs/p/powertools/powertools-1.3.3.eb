@@ -10,11 +10,11 @@ description = ' Helpful tools developed by ICER for using the HPCC.'
 toolchain = SYSTEM
 
 sources = [{
-    'filename': 'powertools-20240919.tar.gz',
+    'filename': 'powertools-20240920.tar.gz',
     'git_config': {
         'url': 'git@gitlab.msu.edu:icer/user-environment',
         'repo_name': 'powertools',
-        'commit': 'ad1ca31d38ee5447d0864ec15b3a53e45f3a1e64',
+        'commit': '1fa39b3987e5dc35eaf93beee27a15dac77912c3',
         'recursive': True
     },
 }]
