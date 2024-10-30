@@ -1,0 +1,24 @@
+diff -ruN nwchem-7.2.2-release/contrib/getfiles.nwchem nwchem-7.2.2-release.new/contrib/getfiles.nwchem
+--- nwchem-7.2.2-release/contrib/getfiles.nwchem	2023-11-03 21:23:27.000000000 -0400
++++ nwchem-7.2.2-release.new/contrib/getfiles.nwchem	2024-10-18 15:12:44.597471671 -0400
+@@ -3,7 +3,7 @@
+ # $Id$
+ cd $NWCHEM_TOP/src/nwpw/nwpwlib/nwpwxc/
+ rm -f dftd3.tgz
+-wget https://www.chemie.uni-bonn.de/pctc/mulliken-center/software/dft-d3/dftd3.tgz
++wget https://www.chemie.uni-bonn.de/grimme/de/software/dft-d3/dftd3.tgz
+ cd $NWCHEM_TOP/src/libext/openblas
+ VERSION=0.3.13
+ rm -rf OpenBLAS*gz
+diff -ruN nwchem-7.2.2-release/src/nwpw/nwpwlib/nwpwxc/build_dftd3a.sh nwchem-7.2.2-release.new/src/nwpw/nwpwlib/nwpwxc/build_dftd3a.sh
+--- nwchem-7.2.2-release/src/nwpw/nwpwlib/nwpwxc/build_dftd3a.sh	2023-11-03 21:23:27.000000000 -0400
++++ nwchem-7.2.2-release.new/src/nwpw/nwpwlib/nwpwxc/build_dftd3a.sh	2024-10-18 15:12:13.649000617 -0400
+@@ -43,7 +43,7 @@
+ rm -f dftd3.f nwpwxc_vdw3a.F
+ export PATH=`pwd`:$PATH
+ #URL1="https://www.chemie.uni-bonn.de/pctc/mulliken-center/software/dft-d3/"
+-URL1="https://www.chemiebn.uni-bonn.de/pctc/mulliken-center/software/dft-d3/"
++URL1="https://www.chemie.uni-bonn.de/grimme/de/software/dft-d3/"
+ URL2="https://web.archive.org/web/20210527062154if_/https://www.chemie.uni-bonn.de/pctc/mulliken-center/software/dft-d3/"
+ declare -a urls=("$URL1" "$URL1" "$URL1" "$URL2" "$URL2")
+ TGZ=dftd3.tgz
