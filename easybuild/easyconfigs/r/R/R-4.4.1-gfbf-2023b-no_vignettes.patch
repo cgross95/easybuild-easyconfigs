@@ -1,0 +1,12 @@
+diff -ruN R-4.4.1/Makefile.in R-4.4.1.new/Makefile.in
+--- R-4.4.1/Makefile.in	2024-03-26 19:02:03.000000000 -0400
++++ R-4.4.1.new/Makefile.in	2024-11-06 13:10:33.520712119 -0500
+@@ -21,7 +21,7 @@
+ SUBDIRS = m4 tools doc etc share src tests
+ SUBDIRS_WITH_NO_BUILD = po
+ 
+-all: Makefile Makeconf R docs recommended vignettes javaconf
++all: Makefile Makeconf R docs recommended javaconf
+ recommended: @USE_RECOMMENDED_PACKAGES_TRUE@ stamp-recommended
+ 
+ Makefile: $(srcdir)/Makefile.in $(top_builddir)/config.status

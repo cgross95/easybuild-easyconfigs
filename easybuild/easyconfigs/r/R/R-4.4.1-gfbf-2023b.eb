@@ -10,6 +10,9 @@ toolchain = {'name': 'gfbf', 'version': '2023b'}
 source_urls = ['https://cloud.r-project.org/src/base/R-%(version_major)s']
 sources = [SOURCE_TAR_GZ]
 checksums = ['b4cb675deaaeb7299d3b265d218cde43f192951ce5b89b7bb1a5148a36b2d94d']
+patches = [
+    'R-4.4.1-gfbf-2023b-no_vignettes.patch',
+]
 
 builddependencies = [
     ('pkgconf', '2.0.3'),
