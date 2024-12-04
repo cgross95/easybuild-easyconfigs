@@ -1,0 +1,51 @@
+easyblock = 'Tarball'
+
+name = 'Roary'
+version = '3.13.0'
+
+homepage = 'https://github.com/sanger-pathogens/Roary'
+description = "Rapid large-scale prokaryote pan genome analysis"
+
+toolchain = {'name': 'foss', 'version': '2023a'}
+
+source_urls = ['https://github.com/sanger-pathogens/%(name)s/archive/']
+sources = ['v%(version)s.tar.gz']
+patches = ['%(name)s-%(version_major_minor)s.0_fix-CD-HIT-regexp.patch']
+checksums = [
+    '375f83c8750b0f4dea5b676471e73e94f3710bc3a327ec88b59f25eae1c3a1e8',  # v3.13.0.tar.gz
+    '28b4176ebf20c7bc6f38fdf1cf7e71cae8bd823297543f93fbc28a0c1c3cf791',  # %(name)s-%(version_major_minor)s.0_fix-CD-HIT-regexp.patch
+]
+
+dependencies = [
+    ('Perl', '5.36.1'),
+    ('CD-HIT', '4.8.1'),
+    ('BLAST+', '2.14.1'),
+    ('MCL', '22.282'),
+    ('BEDTools', '2.31.0'),
+    ('PRANK', '170427'),
+    ('parallel', '20230722'),
+    ('FastTree', '2.1.11'),
+    ('Kraken', '1.1.1'),
+    ('BioPerl', '1.7.8'),
+    ('R', '4.3.2'),
+]
+
+
+sanity_check_paths = {
+    'files': ['bin/%(namelower)s', 'lib/Bio/%(name)s.pm'],
+    'dirs': ['lib/Bio/%(name)s'],
+}
+
+sanity_check_commands = [
+    "perldoc -lm Bio::%(name)s",
+    # make sure all (optional) dependencies are found
+    # grep exits with '1' if no matches are found, hence we need to test the exit code ($?)
+    "%(namelower)s -a",
+    # make sure all (optional) dependencies are found
+    # grep exits with '1' if no matches are found, hence we need to test the exit code ($?)
+    "%(namelower)s -a 2>&1 | grep 'not found'; test $? -eq 1",
+]
+
+modextrapaths = {'PERL5LIB': 'lib'}
+
+moduleclass = 'bio'
