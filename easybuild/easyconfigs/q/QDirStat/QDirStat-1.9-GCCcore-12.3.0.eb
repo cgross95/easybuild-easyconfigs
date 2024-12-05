@@ -1,0 +1,28 @@
+easyblock = 'ConfigureMake'
+
+name = 'QDirStat'
+version = '1.9'
+
+homepage = 'https://github.com/shundhammer/qdirstat'
+description = """QDirStat is a graphical application to show where your disk
+space has gone and to help you to clean it up."""
+
+toolchain = {'name': 'GCCcore', 'version': '12.3.0'}
+
+github_account = 'shundhammer'
+sources = ['%(version)s.tar.gz']
+source_urls = [GITHUB_LOWER_SOURCE]
+
+dependencies = [
+    ('Qt5', '5.15.10'),
+]
+
+configure_cmd = "qmake"
+prefix_opt = "INSTALL_PREFIX="
+
+sanity_check_paths = {
+    'files': ['bin/qdirstat'],
+    'dirs': []
+}
+
+moduleclass = 'tools'
