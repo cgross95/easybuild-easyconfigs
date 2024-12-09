@@ -1,0 +1,30 @@
+easyblock = 'ConfigureMake'
+
+name = 'wmctrl'
+version = '1.07'
+
+homepage = 'https://github.com/Conservatory/wmctrl'
+description = """A command line tool to interact with an EWMH/NetWM compatible
+X Window Manager."""
+
+toolchain = {'name': 'GCCcore', 'version': '12.3.0'}
+
+sources = [{
+    'filename': 'wmctrl-1.07.tar.gz',
+    'git_config': {
+        'url': 'https://github.com/Conservatory',
+        'repo_name': 'wmctrl',
+        'commit': '7c1dcbaa221a16e8a9765bf2b14d61d640a52304',
+    },
+}]
+
+# dependencies = [
+#     ('Qt5', '5.15.10'),
+# ]
+
+sanity_check_paths = {
+    'files': ['bin/wmctrl'],
+    'dirs': []
+}
+
+moduleclass = 'tools'
