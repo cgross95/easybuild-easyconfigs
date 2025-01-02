@@ -1,0 +1,40 @@
+easyblock = 'CmdCp'
+
+name = 'COLONY'
+version = '2.0.7.1'
+
+homepage = 'https://www.zsl.org/about-zsl/resources/software/colony'
+description = """COLONY is a Fortran program written by Jinliang Wang. It
+implements a maximum likelihood method to assign sibship and parentage jointly,
+using individual multilocus genotypes at a number of codominant or dominant
+marker loci."""
+
+toolchain = {'name': 'iimpi', 'version': '2023a'}
+
+source_urls = ['https://cms.zsl.org/sites/default/files/2024-02']
+sources = [{'filename': 'colony2_Lnx_25_02_2024.zip', 'extract_cmd': 'unzip -qq %s'}]
+
+cmds_map = [('./*', 'chmod +x ./*.out')]
+files_to_copy = [
+    (['colony2s.ifort.out', 'colony2p.ifort.impi*.out'], 'bin'),
+    'colony2.dat',
+    'readme.pdf',
+    'ColonyUserGuide.pdf',
+    'ColonyUpdateHistory.txt',
+]
+
+postinstallcmds = [
+    'ln -s %(installdir)s/bin/colony2s* %(installdir)s/bin/colony2s',
+    'ln -s %(installdir)s/bin/colony2p* %(installdir)s/bin/colony2p'
+]
+
+sanity_check_paths = {
+    'files': [
+        'bin/colony2s.ifort.out',
+        'bin/colony2s',
+        'bin/colony2p',
+    ],
+    'dirs': [''],
+}
+
+moduleclass = 'bio'
