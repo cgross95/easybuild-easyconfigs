@@ -1,0 +1,28 @@
+diff -ruN TSEBRA-1.1.2.5/bin/best_by_compleasm.py TSEBRA-1.1.2.5.new/bin/best_by_compleasm.py
+--- TSEBRA-1.1.2.5/bin/best_by_compleasm.py	2024-05-23 07:07:04.000000000 -0400
++++ TSEBRA-1.1.2.5.new/bin/best_by_compleasm.py	2024-08-30 15:12:14.678447042 -0400
+@@ -24,7 +24,7 @@
+ argparser.add_argument('-m', '--tmp_dir', type=str, required = True,
+                           help = 'Temporary directory where intermediate files will be written')
+ argparser.add_argument('-c', '--compleasm_bin', type=str, required = False,
+-                          help = 'Location of compleasm.py on system')
++                          help = 'Location of compleasm on system')
+ argparser.add_argument('-d', '--input_dir', type=str, required = True,
+                             help = 'Output directory of BRAKER')
+ argparser.add_argument('-y', '--tsebra', type=str, required = False,
+@@ -475,7 +475,7 @@
+     # Step 4: Check if all dependencies are available
+     args.tsebra = check_binary(args.tsebra, "tsebra.py")
+     args.getanno = check_binary(args.getanno, "getAnnoFastaFromJoingenes.py")
+-    args.compleasm_bin = check_binary(args.compleasm_bin, "compleasm.py")
++    args.compleasm_bin = check_binary(args.compleasm_bin, "compleasm")
+ 
+     # Step 5: Check if temporary directory exists
+     # if not, create it
+@@ -615,4 +615,4 @@
+ 
+ 
+ if __name__ == "__main__":
+-    main()
+\ No newline at end of file
++    main()

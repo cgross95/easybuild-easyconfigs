@@ -1,0 +1,36 @@
+easyblock = 'PythonPackage'
+
+name = 'compleasm'
+version = '0.2.5'
+
+homepage = 'https://github.com/huangnengCSU/compleasm'
+description = """Compleasm: a faster and more accurate reimplementation of BUSCO. A genome completeness evaluation tool
+based on miniprot"""
+
+toolchain = {'name': 'foss', 'version': '2023a'}
+
+source_urls = [GITHUB_SOURCE]
+sources = ['v%(version)s.tar.gz']
+checksums = ['d2da3f30cf6850daf8328f78986e6bfb6fac1baf2b4b207a14f2180a659a04c7']
+
+dependencies = [
+    ('miniprot', '0.13'),
+    ('HMMER', '3.4'),
+    ('SEPP', '4.5.5'),
+    ('SciPy-bundle', '2023.07'),
+]
+
+github_account = 'huangnengCSU'
+download_dep_fail = True
+sanity_pip_check = True
+use_pip = True
+options = {'modulename': False}
+
+sanity_check_paths = {
+    'files': ['bin/%(name)s'],
+    'dirs': [],
+}
+
+sanity_check_commands = ['%(name)s -h']
+
+moduleclass = 'bio'
