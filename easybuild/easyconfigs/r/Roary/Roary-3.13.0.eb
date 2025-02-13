@@ -1,0 +1,35 @@
+easyblock = 'Binary'
+
+name = 'Roary'
+version = '3.13.0'
+
+homepage = 'https://github.com/sanger-pathogens/Roary'
+description = "Rapid large-scale prokaryote pan genome analysis"
+
+toolchain = SYSTEM
+
+download_instructions = """ Please run
+    mkdir -p ${EASYBUILD_SOURCEPATH%%:*}/r/%(name)s
+    singularity pull ${EASYBUILD_SOURCEPATH%%:*}/r/%(name)s/%(namelower)s_%(version)s.sif docker://sangerpathogens/%(namelower)s
+to download the Singularity image
+"""
+
+sources = ['%(namelower)s_%(version)s.sif']
+checksums = ['92b09e36820ac6594f15ccb898daed245983f5af1159c0c5d486c042e8726f52']
+
+modextravars = {
+    'SINGULARITYENV_LANG': 'C',
+    'SINGULARITYENV_LC_ALL': 'C',
+    'SINGULARITYENV_LANGUAGE': 'C',
+}
+
+modaliases = {
+    '%(namelower)s': 'singularity run %(installdir)s/%(namelower)s_%(version)s.sif roary',
+}
+
+sanity_check_paths = {
+    'files': ['%(namelower)s_%(version)s.sif'],
+    'dirs': [],
+}
+
+moduleclass = 'bio'
