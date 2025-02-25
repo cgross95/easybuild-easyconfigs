@@ -30,12 +30,14 @@ use_pip = True
 github_account = 'google-deepmind'
 exts_list = [
     # Proxy for all dependencies
-    ('chex', '0.1.87', {
+    ('%(namelower)s_dependencies', version, {
         'source_urls': ['https://github.com/%(github_account)s/alphafold3/archive/refs/tags'],
         'sources': ['v3.0.1.tar.gz'],
         'install_src': 'dev-requirements.txt',
+        'download_dep_fail': False,
         'use_pip_requirement': True,
         'pip_no_index': False,
+        'modulename': False,
     }),
     (name, version, {
         'source_urls': ['https://github.com/%(github_account)s/%(namelower)s/archive/refs/tags'],
