@@ -1,0 +1,12 @@
+diff -ruN alphafold3-3.0.1/CMakeLists.txt alphafold3-3.0.1.new/CMakeLists.txt
+--- alphafold3-3.0.1/CMakeLists.txt	2025-01-20 12:36:41.000000000 -0500
++++ alphafold3-3.0.1.new/CMakeLists.txt	2025-01-31 18:05:01.893799023 -0500
+@@ -8,7 +8,7 @@
+ # if received directly from Google. Use is subject to terms of use available at
+ # https://github.com/google-deepmind/alphafold3/blob/main/WEIGHTS_TERMS_OF_USE.md
+ 
+-cmake_minimum_required(VERSION 3.28)
++cmake_minimum_required(VERSION 3.26)
+ project(
+   "${SKBUILD_PROJECT_NAME}"
+   LANGUAGES CXX

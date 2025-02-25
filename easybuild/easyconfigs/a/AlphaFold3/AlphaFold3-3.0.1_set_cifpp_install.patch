@@ -1,0 +1,13 @@
+diff -ruN alphafold3-3.0.1/CMakeLists.txt alphafold3-3.0.1.new/CMakeLists.txt
+--- alphafold3-3.0.1/CMakeLists.txt	2025-02-24 19:34:12.956815188 -0500
++++ alphafold3-3.0.1.new/CMakeLists.txt	2025-02-25 09:42:47.727252169 -0500
+@@ -54,6 +54,9 @@
+   GIT_TAG 57560472b4260dc41f457706bc45fc6ef0bc0f10 # v4.4.7
+   EXCLUDE_FROM_ALL)
+ 
++set(CIFPP_DATA_DIR ${SKBUILD_PLATLIB_DIR}/share/libcifpp CACHE INTERNAL "cifpp data")
++set(CIFPP_CACHE_DIR ${SKBUILD_PLATLIB_DIR}/cache/libcifpp CACHE INTERNAL "cifpp cache")
++
+ FetchContent_MakeAvailable(pybind11 abseil-cpp pybind11_abseil cifpp dssp)
+ 
+ find_package(

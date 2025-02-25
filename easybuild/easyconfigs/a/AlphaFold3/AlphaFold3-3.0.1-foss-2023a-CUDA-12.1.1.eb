@@ -1,0 +1,56 @@
+easyblock = 'PythonBundle'
+
+name = 'AlphaFold3'
+version = '3.0.1'
+versionsuffix = '-CUDA-%(cudaver)s'
+
+homepage = 'https://github.com/google-deepmind/alphafold3'
+description = "Bundle of Python packages for use with AlphaFold3"
+
+toolchain = {'name': 'foss', 'version': '2023a'}
+toolchainopts = {'pic': True}
+
+builddependencies = [
+    ('CMake', '3.26.3'),
+    ('meson-python', '0.13.2'),
+    ('scikit-build-core', '0.5.0'),
+    ('Ninja', '1.11.1'),
+    ('pybind11', '2.11.1'),
+]
+
+dependencies = [
+    ('HMMER', '3.4'),
+    ('CUDA', '12.1.1', '', SYSTEM),
+    ('Python', '3.11.3'),
+]
+
+sanity_pip_check = False
+use_pip = True
+
+github_account = 'google-deepmind'
+exts_list = [
+    # Proxy for all dependencies
+    ('chex', '0.1.87', {
+        'source_urls': ['https://github.com/%(github_account)s/alphafold3/archive/refs/tags'],
+        'sources': ['v%(version)s.tar.gz'],
+        'install_src': 'dev-requirements.txt',
+        'use_pip_requirement': True,
+        'pip_no_index': False,
+    }),
+    (name, version, {
+        'source_urls': ['https://github.com/%(github_account)s/%(namelower)s/archive/refs/tags'],
+        'sources': ['v%(version)s.tar.gz'],
+        'patches': [
+            '%(name)s-%(version)s_revise_build.patch',
+            '%(name)s-%(version)s_relax_cmake.patch',
+            '%(name)s-%(version)s_set_cifpp_install.patch',
+        ],
+        'pip_verbose': True,
+        'preinstallopts': 'SKBUILD_CMAKE_VERBOSE=true '
+                          'SKBUILD_LOGGING_LEVEL="INFO" '
+                          'SKBUILD_CMAKE_ARGS="-L" '
+                          'SKBUILD_CMAKE_DEFINE="CIFPP_INSTALL_UPDATE_SCRIPT=OFF" ',
+    }),
+]
+
+moduleclass = 'bio'
