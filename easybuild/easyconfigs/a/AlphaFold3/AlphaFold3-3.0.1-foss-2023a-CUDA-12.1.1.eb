@@ -46,13 +46,30 @@ exts_list = [
             '%(name)s-%(version)s_revise_build.patch',
             '%(name)s-%(version)s_relax_cmake.patch',
             '%(name)s-%(version)s_set_cifpp_install.patch',
+            '%(name)s-%(version)s_fix_components_lookup.patch',
         ],
         'pip_verbose': True,
         'preinstallopts': 'SKBUILD_CMAKE_VERBOSE=true '
                           'SKBUILD_LOGGING_LEVEL="INFO" '
                           'SKBUILD_CMAKE_ARGS="-L" '
                           'SKBUILD_CMAKE_DEFINE="CIFPP_INSTALL_UPDATE_SCRIPT=OFF" ',
+        'postinstallcmds': [
+            'cp run_alphafold.py %(installdir)s/bin',
+            'chmod +x %(installdir)s/bin/run_alphafold.py',
+            '%(installdir)s/bin/build_data',
+        ],
     }),
+]
+
+fix_python_shebang_for = ['bin/run_alphafold.py']
+
+sanity_check_paths = {
+    'files': ['bin/run_alphafold.py'],
+    'dirs': ['lib'],
+}
+
+sanity_check_commands = [
+    ('run_alphafold.py --help | grep "AlphaFold 3 structure prediction script"')
 ]
 
 moduleclass = 'bio'
