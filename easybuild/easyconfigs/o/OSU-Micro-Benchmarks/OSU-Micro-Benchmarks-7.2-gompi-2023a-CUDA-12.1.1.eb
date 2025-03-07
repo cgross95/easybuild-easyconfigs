@@ -17,8 +17,8 @@ checksums = ['1a4e1f2aab0e65404b3414e23bd46616184b69b6231ce9313d9c630bd6e633c1']
 dependencies = [
     ('CUDA', '12.1.1', '', SYSTEM),
     ('NCCL', '2.18.3', versionsuffix),
-    ('UCX-CUDA', '1.14.1', versionsuffix),
-    ('UCC-CUDA', '1.2.0', versionsuffix),
+    ('UCX-CUDA', '1.18.0', versionsuffix),
+    ('UCC-CUDA', '1.3.0', versionsuffix),
 ]
 
 configopts = ' --enable-cuda --with-cuda=$EBROOTCUDA --enable-ncclomb --with-nccl=$EBROOTNCCL'

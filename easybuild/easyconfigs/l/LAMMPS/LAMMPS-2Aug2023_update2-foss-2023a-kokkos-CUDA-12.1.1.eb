@@ -40,7 +40,7 @@ builddependencies = [
 ]
 dependencies = [
     ('CUDA', '12.1.1', '', SYSTEM),
-    ('UCX-CUDA', '1.14.1', _cuda_suffix),
+    ('UCX-CUDA', '1.18.0', _cuda_suffix),
     ('NCCL', '2.18.3', _cuda_suffix),
     ('Python', '3.11.3'),
     ('libpng', '1.6.39'),
