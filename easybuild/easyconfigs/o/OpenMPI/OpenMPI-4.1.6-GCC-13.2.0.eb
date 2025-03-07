@@ -32,10 +32,10 @@ dependencies = [
     ('zlib', '1.2.13'),
     ('hwloc', '2.9.2'),
     ('libevent', '2.1.12'),
-    ('UCX', '1.15.0'),
+    ('UCX', '1.18.0'),
     ('libfabric', '1.19.0'),
     ('PMIx', '4.2.6'),
-    ('UCC', '1.2.0'),
+    ('UCC', '1.3.0'),
 ]
 
 # Update configure to include changes from the "internal-cuda" patch
