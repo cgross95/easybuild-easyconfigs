@@ -11,6 +11,6 @@ source_urls = ['https://registrationcenter-download.intel.com/akdlm/IRC_NAS/1901
 sources = ['l_mpi_oneapi_p_%(version)s.16815_offline.sh']
 checksums = ['90e7804f2367d457cd4cbf7aa29f1c5676287aa9b34f93e7c9a19e4b8583fff7']
 
-dependencies = [('UCX', '1.13.1')]
+dependencies = [('UCX', '1.18.0')]
 
 moduleclass = 'mpi'
