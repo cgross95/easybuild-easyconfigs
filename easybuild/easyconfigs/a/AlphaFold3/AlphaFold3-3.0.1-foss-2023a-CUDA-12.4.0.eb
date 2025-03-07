@@ -47,6 +47,7 @@ exts_list = [
         'modulename': False,
         'use_pip_for_deps': False,
         'pip_ignore_installed': False,
+        'pip_build_isolation': True,
     }),
     (name, version, {
         # 'source_urls': ['https://github.com/%(github_account)s/%(namelower)s/archive/refs/tags'],
@@ -65,6 +66,7 @@ exts_list = [
         'pip_no_index': False,
         'use_pip_for_deps': True,
         'pip_ignore_installed': False,
+        'pip_build_isolation': True,
     }),
 ]
 
