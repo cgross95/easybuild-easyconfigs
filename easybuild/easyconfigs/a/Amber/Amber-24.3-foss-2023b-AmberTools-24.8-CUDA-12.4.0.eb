@@ -23,6 +23,7 @@ patches = [
     {'name': 'AmberTools-21_fix_potential_use_before_init.patch', 'alt_location': 'AmberTools'},
     {'name': 'AmberTools-21_fix_rism_argument_mismatch.patch', 'alt_location': 'AmberTools'},
     {'name': 'AmberTools-21_fix_xray_fftpack_arg_mismatch.patch', 'alt_location': 'AmberTools'},
+    {'name': 'AmberTools-24_fix_pmemd_threads.patch', 'alt_location': 'AmberTools'},
     '%(name)s-22_remove_undeclared_redundant_variable.patch',
 ]
 
