@@ -1,5 +1,5 @@
 name = 'NCCL'
-version = '2.20.5'
+version = "2.20.5"
 versionsuffix = '-CUDA-%(cudaver)s'
 
 homepage = 'https://developer.nvidia.com/nccl'
@@ -12,12 +12,12 @@ github_account = 'NVIDIA'
 source_urls = [GITHUB_SOURCE]
 sources = ['v%(version)s-1.tar.gz']
 checksums = ['d11ad65c1df3cbe4447eaddceec71569f5c0497e27b3b8369cf79f18d2b2ad8c']
-
-builddependencies = [('binutils', '2.40')]
-
+builddependencies = [
+    ('binutils', '2.40'),
+]
 dependencies = [
     ('CUDA', '12.4.0', '', SYSTEM),
-    ('UCX-CUDA', '1.15.0', versionsuffix),
+    ('UCX-CUDA', '1.18.0', '-CUDA-%(cudaver)s'),
 ]
 
 # default CUDA compute capabilities to use (override via --cuda-compute-capabilities)

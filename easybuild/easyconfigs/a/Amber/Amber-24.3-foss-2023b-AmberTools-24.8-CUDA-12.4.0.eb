@@ -48,7 +48,7 @@ dependencies = [
     ('Tkinter', '3.11.5'),
     ('X11', '20231019'),
     ('CUDA', '12.4.0', '', SYSTEM),
-    ('NCCL', '2.12.12', '-CUDA-%(cudaver)s'),
+    ('NCCL', '2.20.5', '-CUDA-%(cudaver)s'),
     ('UCX-CUDA', '1.18.0', '-CUDA-%(cudaver)s'),
 ]
 
