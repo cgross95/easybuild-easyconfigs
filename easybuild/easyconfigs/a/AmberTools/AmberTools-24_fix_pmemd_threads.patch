@@ -1,0 +1,30 @@
+diff -ruN amber24_src/src/pmemd/src/cuda/gti_cuda.cu amber24_src.new/src/pmemd/src/cuda/gti_cuda.cu
+--- amber24_src/src/pmemd/src/cuda/gti_cuda.cu	2024-04-29 13:47:47.000000000 -0400
++++ amber24_src.new/src/pmemd/src/cuda/gti_cuda.cu	2025-03-25 18:08:20.627289138 -0400
+@@ -1025,7 +1025,7 @@
+   int nterms = gpu->sim.atoms / GRID;
+ 
+   //unsigned threadsPerBlock = (isDPFP) ? 128 : ((PASCAL) ? 256 : 1024);
+-  unsigned threadsPerBlock =  (isDPFP) ? 128 : ((PASCAL || VOLTA || AMPERE) ? 256 : 768);
++  unsigned threadsPerBlock =  (isDPFP) ? 128 : 256;
+   unsigned factor = 1;
+   unsigned blocksToUse = (isDPFP) ? gpu->blocks : min((nterms / threadsPerBlock ) + 1,
+                                                       gpu->blocks * factor);
+@@ -1074,7 +1074,7 @@
+   int nterms = gpu->sim.atoms / 32;
+ 
+   //unsigned threadsPerBlock = (isDPFP) ? 128 : ((PASCAL) ? 256 : 1024);
+-  unsigned threadsPerBlock =  (isDPFP) ? 128 : ((PASCAL || VOLTA || AMPERE) ? 256 : 768);
++  unsigned threadsPerBlock =  (isDPFP) ? 128 : 256;
+   unsigned factor = 1;
+   unsigned blocksToUse = (isDPFP) ? gpu->blocks : min((nterms / threadsPerBlock ) + 1,
+                                                       gpu->blocks * factor);
+@@ -1122,7 +1122,7 @@
+   int nterms = gpu->sim.atoms; 
+ 
+   //unsigned threadsPerBlock = (isDPFP) ? 128 : ((PASCAL) ? 256 : 1024);
+-  unsigned threadsPerBlock =  (isDPFP) ? 128 : ((PASCAL || VOLTA || AMPERE) ? 256 : 768);
++  unsigned threadsPerBlock =  (isDPFP) ? 128 : 256;
+   unsigned factor = 1;
+   unsigned blocksToUse = (isDPFP) ? gpu->blocks : min((nterms / threadsPerBlock ) + 1,
+                                                       gpu->blocks * factor);
