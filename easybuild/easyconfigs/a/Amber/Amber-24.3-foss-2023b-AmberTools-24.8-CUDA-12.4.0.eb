@@ -1,0 +1,63 @@
+name = 'Amber'
+version = '24.3'
+versionsuffix = '-AmberTools-24.8-CUDA-%(cudaver)s'
+
+homepage = 'https://ambermd.org/amber.html'
+description = """Amber (originally Assisted Model Building with Energy Refinement) is software for performing
+ molecular dynamics and structure prediction."""
+
+toolchain = {'name': 'foss', 'version': '2023b'}
+toolchainopts = {'usempi': True, 'openmp': True}
+
+sources = [
+    '%(name)s24.tar.bz2',
+    {'filename': 'AmberTools24.tar.bz2', 'alt_location': 'AmberTools'},
+]
+patches = [
+    {'name': 'AmberTools-20_cmake-locate-netcdf.patch', 'alt_location': 'AmberTools'},
+    {'name': 'AmberTools-20_fix_missing_MPI_LIBRARY_error.patch', 'alt_location': 'AmberTools'},
+    {'name': 'AmberTools-20_fix_xblas_missing_make_dependency.patch', 'alt_location': 'AmberTools'},
+    {'name': 'AmberTools-21_CMake-FlexiBLAS.patch', 'alt_location': 'AmberTools'},
+    {'name': 'AmberTools-21_fix_incorrect_dvout_call.patch', 'alt_location': 'AmberTools'},
+    {'name': 'AmberTools-21_fix_more_blas_argument_problems.patch', 'alt_location': 'AmberTools'},
+    {'name': 'AmberTools-21_fix_potential_use_before_init.patch', 'alt_location': 'AmberTools'},
+    {'name': 'AmberTools-21_fix_rism_argument_mismatch.patch', 'alt_location': 'AmberTools'},
+    {'name': 'AmberTools-21_fix_xray_fftpack_arg_mismatch.patch', 'alt_location': 'AmberTools'},
+    {'name': 'AmberTools-24_fix_pmemd_threads.patch', 'alt_location': 'AmberTools'},
+    '%(name)s-22_remove_undeclared_redundant_variable.patch',
+]
+
+builddependencies = [
+    ('CMake', '3.27.6'),
+    ('Bison', '3.8.2'),
+    ('flex', '2.6.4'),
+    ('make', '4.4.1'),
+]
+dependencies = [
+    ('zlib', '1.2.13'),
+    ('bzip2', '1.0.8'),
+    ('Python', '3.11.5'),
+    ('SciPy-bundle', '2023.11'),
+    ('Perl', '5.38.0'),
+    ('Boost', '1.83.0'),
+    ('libreadline', '8.2'),
+    ('matplotlib', '3.8.2'),
+    ('netCDF', '4.9.2'),
+    ('netCDF-Fortran', '4.6.1'),
+    ('PnetCDF', '1.12.3'),
+    ('Tkinter', '3.11.5'),
+    ('X11', '20231019'),
+    ('CUDA', '12.4.0', '', SYSTEM),
+    ('NCCL', '2.20.5', '-CUDA-%(cudaver)s'),
+    ('UCX-CUDA', '1.15.0', '-CUDA-%(cudaver)s'),
+]
+
+# Some CUDA tests differs from expected results
+runtest = False
+patchlevels = (
+    8,
+    3,
+)  # (AmberTools, Amber)
+static = False
+
+moduleclass = 'chem'
