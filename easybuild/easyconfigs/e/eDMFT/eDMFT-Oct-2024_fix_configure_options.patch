@@ -1,0 +1,39 @@
+diff --git a/configure.py.intel b/configure.py.intel
+index 3ec56d8..9d0b02c 100644
+--- a/configure.py.intel
++++ b/configure.py.intel
+@@ -2,8 +2,6 @@
+ # -*- coding: utf-8 -*-
+ 
+ class Config:
+-  prefix      = "bin"          # Installation path
+-
+   compiler    = "INTEL"        # Compiler
+   
+   cflags      = "-O2 -std=c++11" # compiling flags for C++ programs
+@@ -15,9 +13,9 @@ class Config:
+   cxx         = "icpx"         # new C++ compiler
+   
+   mpi_define  = "-D_MPI"       # should be -D_MPI for mpi code and empty for serial code.
+-  pcc         = "mpicc"        # C compiler 
+-  pcxx        = "mpicxx"       # C++ compiler 
+-  pfc         = "mpif90"       # Fortran compiler 
++  pcc         = "mpiicc"        # C compiler 
++  pcxx        = "mpiicpc"       # C++ compiler 
++  pfc         = "mpiifort"       # Fortran compiler 
+   
+   blasname    = "MKL"             # BLAS   library
+   blaslib     = "-qmkl-ilp64=parallel -qmkl" # BLAS   library
+diff --git a/install_script/iframework.py b/install_script/iframework.py
+index 7da8ab7..2452e07 100644
+--- a/install_script/iframework.py
++++ b/install_script/iframework.py
+@@ -317,7 +317,7 @@ and specify missing parameters.\n""")
+                     self.clean = 1
+                     return
+                 elif o in ('-p', '--prefix'):
+-                    self.prefix = a
++                    self.config.prefix = os.path.abspath(f"{a}/bin")
+                 elif o in ('-b', '--build'):
+                     self.build = a
+                 elif o == '--cflags':

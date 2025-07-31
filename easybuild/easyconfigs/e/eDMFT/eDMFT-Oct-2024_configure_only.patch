@@ -1,0 +1,13 @@
+diff --git a/install_script/dmft_install.py b/install_script/dmft_install.py
+index ff7a490..f460bac 100644
+--- a/install_script/dmft_install.py
++++ b/install_script/dmft_install.py
+@@ -123,7 +123,7 @@ PYBND = """+self.config.pybind11+"""
+         print('..... If you want to compile the code manually, enter ./src  and type "make". You can also type "make clean" to clean.')
+         print('Please press enter to start compilation')
+         sys.stdout.flush()
+-        input()
++        sys.exit()
+ 
+         comm = self.make
+         #(output, error, retz) = shellcmd(comm)

@@ -1,0 +1,46 @@
+easyblock = 'ConfigureMake'
+
+name = 'eDMFT'
+version = 'Oct-2024'
+
+homepage = 'http://dmtcp.sourceforge.net/index.html'
+description = """eDMFT is a software package implementing the combination Density Functional Theory  and Dynamical Mean Field Theory, which is derived from the stationary Luttinger-Ward functional. The implementation is carefully designed so that it keeps the stationarity of the original functional throughout the algorithm, and postulates the locality of the correlations in real space, as opposed to more commonly chosen locality of correlations in Wannier space. The single-particle Green’s function is expanded in the full potential LAPW basis, and the single-particle Green’s function is self-consistently determined (including self-consistent electronic charge). The algorithm also implements the exact double-counting of DFT and DMFT . The impurity solvers include numerically exact continuous time quantum Monte Carlo , non-crossing and one-crossing approximation."""
+
+toolchain = {'name': 'intel', 'version': '2023a'}
+
+github_account = 'ru-ccmt'
+source_urls = ['https://github.com/%(github_account)s/%(name)s/archive/refs/tags']
+sources = ['%(version)s.tar.gz']
+patches = [
+    "%(name)s-%(version)s_fix_configure_options.patch",
+    "%(name)s-%(version)s_configure_only.patch",
+]
+checksums = [
+    {'Oct-2024.tar.gz': 'f8cde5d4a7ba99cab32ed92a3725c0b4a11c3861e4cb15b5a3733c684239bf1a'},
+    {'eDMFT-Oct-2024_fix_configure_options.patch': '490a8356acaa1d910ad375dc7a5170665c9f3f03c06deccb94fdff52b79e8ec4'},
+    {'eDMFT-Oct-2024_configure_only.patch': '6eb030d6892ddd050ea48e27ef0ab73a39a33fcda26ca1474b8138a12033e36d'},
+]
+
+dependencies = [
+    ('SciPy-bundle', '2023.07', '', ('intel', '2023a')),
+    ('GSL', '2.7'),
+    ('FFTW', '3.3.10'),
+]
+
+maxparallel = 1  # Parallel builds fail
+#configure_cmd = "sed -i -e 's/mpicc/mpiicc/g;s/mpicxx/mpiicpc/g;s/mpif90/mpiifort/g;s/prefix.*$//' -e '5i\\  prefix = \"%(installdir)s/bin\"' configure.py && sed -i -e 's/input()/sys.exit()/g' install_script/dmft_install.py && python setup.py"
+configure_cmd = "python setup.py"
+# Problem with f2py Fortran flags and incompatible function pointer types, ignoring for now
+pre_build_opts = "cd src && unset FFLAGS && export CFLAGS=\"-Wno-error=incompatible-function-pointer-types $CFLAGS\" && "
+pre_install_opts = "cd src && "
+
+sanity_check_paths = {
+    'files': ['bin/dmft', 'bin/dmft2'],
+    'dirs': ['bin'],
+}
+
+modextravars = {
+    "WIEN_DMFT_ROOT": "%(installdir)s/bin"
+}
+
+moduleclass = 'phys'
