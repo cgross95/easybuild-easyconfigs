@@ -16,8 +16,17 @@ download_instructions = """Vasp is proprietary software, see http://www.vasp.at/
  on how to get access to the code."""
 
 sources = ['%(namelower)s.%(version)s.tgz']
-checksums = ['d25e2f477d83cb20fce6a2a56dcee5dccf86d045dd7f76d3ae19af8343156a13']
+patches = [
+    'VASP-6.2.1_enable_hdf5_acc.patch'
+]
+checksums = [
+    {'%(namelower)s.%(version)s.tgz':
+     'd25e2f477d83cb20fce6a2a56dcee5dccf86d045dd7f76d3ae19af8343156a13'}
+]
 
+dependencies = [
+    ('HDF5', '1.12.2', '', ('nvompi', '2023.07')),
+]
 prebuildopts = "cp arch/makefile.include.linux_nv_acc ./makefile.include && sed -i 's/,cuda11.0//' makefile.include && "
 
 # Makefile uses LIBS as a list of folders
