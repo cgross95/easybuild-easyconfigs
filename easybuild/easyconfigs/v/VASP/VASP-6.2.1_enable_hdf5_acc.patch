@@ -1,5 +1,5 @@
---- makefile.include.linux_nv_acc.orig	2025-10-20 17:04:17.813536310 -0400
-+++ makefile.include.linux_nv_acc	2025-10-20 17:07:06.076598513 -0400
+--- arch/makefile.include.linux_nv_acc.orig	2025-10-20 17:04:17.813536310 -0400
++++ arch/makefile.include.linux_nv_acc	2025-10-20 17:07:06.076598513 -0400
 @@ -75,3 +75,8 @@
  # Normally no need to change this
  SRCDIR     = ../../src
