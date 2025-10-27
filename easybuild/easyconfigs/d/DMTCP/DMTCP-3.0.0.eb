@@ -1,0 +1,33 @@
+easyblock = 'ConfigureMake'
+
+name = 'DMTCP'
+version = "3.0.0"
+
+homepage = 'http://dmtcp.sourceforge.net/'
+description = """DMTCP (Distributed MultiThreaded Checkpointing) transparently checkpoints a single-host or
+ distributed computation in user-space -- with no modifications to user code or to the O/S. It works on most Linux
+ applications, including Python, Matlab, R, GUI desktops, MPI, etc."""
+
+toolchain = SYSTEM
+
+sources = [{
+    'filename': 'dmtcp-3.0.0.tar.gz',
+    'git_config': {
+        'url': 'https://github.com/dmtcp/',
+        'repo_name': 'dmtcp',
+        'commit': 'b3f87f6d8bb05158d8e2b001fcea8eebc5496991',
+        'recursive': True
+    },
+}]
+
+builddependencies = [('binutils', '2.40')]
+
+runtest = 'check'
+
+sanity_check_paths = {
+    'files': ['bin/dmtcp_command', 'bin/dmtcp_coordinator', 'bin/dmtcp_launch', 'bin/dmtcp_restart',
+              'include/dmtcp.h'],
+    'dirs': ['lib/dmtcp', 'share/man/man1'],
+}
+
+moduleclass = 'tools'
