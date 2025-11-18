@@ -14,7 +14,7 @@ sources = [{
     'git_config': {
         'url': 'git@gitlab.msu.edu:icer/user-environment',
         'repo_name': 'powertools',
-        'commit': 'b64de439fd2a3d72900d96b0a90b6e9bb994454b',
+        'commit': '02a6fee9cebda946c2b655eaae54ca8b678ccc35',
         'recursive': True
     },
 }]
