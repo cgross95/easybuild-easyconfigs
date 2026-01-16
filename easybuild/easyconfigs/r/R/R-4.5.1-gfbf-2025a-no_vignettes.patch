@@ -6,7 +6,7 @@ diff -ruN R-4.5.1/Makefile.in R-4.5.1.new/Makefile.in
  SUBDIRS_WITH_NO_BUILD = po
  
 -all: Makefile Makeconf R docs recommended vignettes javaconf
-+all: Makefile Makeconf R docs recommended javaconf
++all: Makefile Makeconf R recommended javaconf
  recommended: @USE_RECOMMENDED_PACKAGES_TRUE@ stamp-recommended
  
  Makefile: $(srcdir)/Makefile.in $(top_builddir)/config.status
