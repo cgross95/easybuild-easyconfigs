@@ -10,6 +10,9 @@ toolchain = {'name': 'gfbf', 'version': '2025a'}
 source_urls = ['https://cloud.r-project.org/src/base/R-%(version_major)s']
 sources = [SOURCE_TAR_GZ]
 checksums = ['b42a7921400386645b10105b91c68728787db5c4c83c9f6c30acdce632e1bb70']
+patches = [
+    'R-4.5.1-gfbf-2025a-no_vignettes.patch',
+]
 
 builddependencies = [
     ('pkgconf', '2.3.0'),
