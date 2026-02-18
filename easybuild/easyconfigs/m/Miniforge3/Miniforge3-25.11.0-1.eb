@@ -1,0 +1,32 @@
+easyblock = 'EB_Mamba'
+
+name = 'Miniforge3'
+version = "25.11.0-1"
+
+homepage = 'https://github.com/conda-forge/miniforge'
+description = """Miniforge is a free minimal installer for conda and Mamba specific
+ to conda-forge."""
+
+toolchain = SYSTEM
+
+local_arch = {'arm64': 'aarch64'}.get(ARCH, ARCH)
+moduleclass = 'lang'
+
+source_urls = ['https://github.com/conda-forge/miniforge/releases/download/%(version)s']
+sources = ['%%(name)s-%%(version)s-Linux-%s.sh' % local_arch]
+checksums = ['be1bad9d4e67a8753eb76fb4940e9a08036786675c7adf060627e55791bf110d']
+
+
+postinstallcmds = [
+    'echo "channels:" > %(installdir)s/.condarc',
+    'echo "  - conda-forge" >> %(installdir)s/.condarc',
+    'echo "envs_dirs:" >> %(installdir)s/.condarc',
+    'echo "  - ~/.conda/envs/" >> %(installdir)s/.condarc',
+    'echo "auto_activate_base: false" >> %(installdir)s/.condarc',
+]
+
+modluafooter = """
+conflict('Python')
+conflict('Conda')
+source_sh('bash', '%(installdir)s/etc/profile.d/conda.sh')
+"""
