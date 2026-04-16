@@ -1,0 +1,27 @@
+easyblock = 'Tarball'
+
+name = 'geckodriver'
+version= '0.36.0'
+
+homepage = 'https://firefox-source-docs.mozilla.org/testing/geckodriver/'
+
+description = 'Proxy for using W3C WebDriver-compatible clients to interact with Gecko-based browsers.'
+
+toolchain = {'name': 'system', 'version': ''}
+
+github_account='mozilla'
+source_urls = [GITHUB_RELEASE]
+sources = ['%(name)s-v%(version)s-linux64.tar.gz']
+
+sanity_check_paths = {
+    'files': ['%(name)s'],
+    'dirs': [],
+}
+
+sanity_check_commands = [
+    '%(name)s --version',
+]
+
+modextrapaths = {
+    'PATH': '',
+}
