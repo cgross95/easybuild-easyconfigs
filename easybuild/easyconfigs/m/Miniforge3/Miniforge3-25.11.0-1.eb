@@ -22,6 +22,8 @@ postinstallcmds = [
     'echo "  - conda-forge" >> %(installdir)s/.condarc',
     'echo "envs_dirs:" >> %(installdir)s/.condarc',
     'echo "  - ~/.conda/envs/" >> %(installdir)s/.condarc',
+    'echo "pkgs_dirs:" >> %(installdir)s/.condarc',
+    'echo "  - ~/.conda/pkgs/" >> %(installdir)s/.condarc',
     'echo "auto_activate_base: false" >> %(installdir)s/.condarc',
 ]
 
